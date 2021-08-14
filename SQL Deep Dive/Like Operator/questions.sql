@@ -15,6 +15,7 @@ SELECT ..., EXTRACT (YEAR FROM AGE(birth_date)) as "age" FROM employees;
 * Expected output: 1846
 */
 
+select count(employees) from Employees where firstname ILIKE 'A%R'
                                                   
 /*
 * DB: Store
@@ -23,7 +24,7 @@ SELECT ..., EXTRACT (YEAR FROM AGE(birth_date)) as "age" FROM employees;
 * Expected output: 4211 
 */
 
-
+SELECT COUNT(emp_no) from Employees where CAST(zipcode AS TEXT) LIKE '%2%'
 
 /*
 * DB: Store
@@ -31,6 +32,8 @@ SELECT ..., EXTRACT (YEAR FROM AGE(birth_date)) as "age" FROM employees;
 * Question: How many people's zipcode start with 2 with the 3rd character being a 1.
 * Expected output: 109 
 */
+
+SELECT COUNT(emp_no) from Employees where CAST(zipcode AS TEXT) LIKE '2_1%'
 
 
 /*
@@ -40,4 +43,7 @@ SELECT ..., EXTRACT (YEAR FROM AGE(birth_date)) as "age" FROM employees;
 * Replace null values with "No State"                                                  
 * Expected output: https://imgur.com/AVe6G4c
 */
+
+SELECT coalesce(state, "No State") from Employees where CAST(phone AS TEXT) LIKE '302%'
+
 
